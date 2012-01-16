@@ -14,7 +14,7 @@ BuildRequires:   cmake
 BuildRequires:   qt4-devel
 BuildRequires:   desktop-file-utils
 BuildRequires:   alsa-lib-devel
-BuildRequires:   MesaGLU-devel
+BuildRequires:   mesaglu-devel
 
 %description
 A MIDI file player/game that displays the musical notes AND teaches you how
