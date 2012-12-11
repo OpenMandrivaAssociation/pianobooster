@@ -1,7 +1,7 @@
 Name:            pianobooster
 Summary:         A MIDI file player that teaches you how to play the piano
 Version:         0.6.4b
-Release:         1
+Release:         2
 License:         GPLv3+
 Group:           Sound
 URL:             http://pianobooster.sourceforge.net/
@@ -9,11 +9,10 @@ Source0:         http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}
 Source1:         %{name}.desktop
 # link libpthread and libGL explicitly
 Patch0:          pianobooster-0.6.4b-explicit-linking.patch
-BuildRoot:       %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:   cmake
 BuildRequires:   qt4-devel
 BuildRequires:   desktop-file-utils
-BuildRequires:   alsa-lib-devel
+BuildRequires:   pkgconfig(alsa)
 BuildRequires:   mesaglu-devel
 
 %description
@@ -30,6 +29,7 @@ MIDI keyboard.
 %prep
 %setup -q -n %{name}-src-%{version}
 %patch0 -p1 -b .linkpthread
+perl -pi -e "s/-mwindows//g" src/CMakeLists.txt
 
 sed -e 's|\r||g' README.txt > README.txt.tmp
 touch -r README.txt README.txt.tmp
@@ -47,22 +47,21 @@ find -name '*.h' -exec chmod a-x {} \;
 make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
 pushd build
-install -d $RPM_BUILD_ROOT/%{_bindir}
-install %{name} $RPM_BUILD_ROOT/%{_bindir}
+install -d %{buildroot}%{_bindir}
+install %{name} %{buildroot}%{_bindir}
 popd
 
-install -d $RPM_BUILD_ROOT%{_datadir}/applications
+install -d $%{buildroot}%{_datadir}/applications
 desktop-file-install \
     --dir %{buildroot}%{_datadir}/applications  \
     %{SOURCE1}
 
 
-install -d $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/32x32/apps
-install -m 644 -p src/images/Logo32x32.png $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
-install -d $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/64x64/apps
-install -m 644 -p src/images/logo64x64.png $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/64x64/apps/%{name}.png
+install -d %{buildroot}%{_datadir}/icons/hicolor/32x32/apps
+install -m 644 -p src/images/Logo32x32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
+install -d %{buildroot}%{_datadir}/icons/hicolor/64x64/apps
+install -m 644 -p src/images/logo64x64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/%{name}.png
 
 %post
 touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
@@ -76,8 +75,6 @@ fi
 %posttrans
 gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
@@ -85,4 +82,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_datadir}/icons/hicolor/*/apps/*
+
+
+
+%changelog
+* Mon Jan 16 2012 Vladimir Testov <vladimir.testov@rosalab.ru> 0.6.4b-1
++ Revision: 761707
+- builreq corrected again
+- builreq corrected
+- builreq added
+- fixed group
+- Add pianobooster
+- Add pianobooster
+- Created package structure for pianobooster.
 
