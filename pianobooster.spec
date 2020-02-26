@@ -104,19 +104,7 @@ even without a plugged-in MIDI keyboard.
        -DWITH_MAN=ON
 %make_build
 
-#Qmake is alternative options to build. Use if cmake fail.
-#%qmake_qt5 \
-#       USE_SYSTEM_FONT=ON \
-#       NO_DOCS=ON \
-#       NO_LICENSE=ON \
-#       NO_CHANGELOG=ON \
-#       INSTALL_ALL_LANGS=ON \
-#       USE_BUNDLED_RTMIDI=OFF \
-#       EXPERIMENTAL_USE_FLUIDSYNTH=OFF \
-#       WITH_MAN=ON
-
 
 %install
-
 %make_install
 
