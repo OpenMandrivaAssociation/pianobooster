@@ -106,5 +106,5 @@ even without a plugged-in MIDI keyboard.
 
 
 %install
-%cmake_install
+%make_install -C build
 
