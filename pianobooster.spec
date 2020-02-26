@@ -24,6 +24,7 @@ BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(rtmidi)
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  hicolor-icon-theme
 
 Requires:       fonts-ttf-dejavu
