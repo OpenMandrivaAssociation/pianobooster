@@ -11,6 +11,7 @@ Source0:        https://github.com/captnfab/PianoBooster/archive/v%{version}/%{o
 
 
 BuildRequires:  cmake
+BuildRequires:  qmake5
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(ftgl)
