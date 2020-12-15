@@ -65,26 +65,6 @@ is really recommended.
 
 #----------------------------------------------------------------------------
 
-%package        fluidsynth
-Summary:        Wrapper to launch PianoBooster with FluidSynth as MIDI sequencer
-Group:          Sound/Midi
-BuildRequires:  pkgconfig(fluidsynth)
-Requires:       %{name} = %{version}-%{release}
-Requires:       fluidsynth
-Requires:       fluid-soundfont-gm
-Requires:       fluid-soundfont-gs
-Requires:       libnotify
-
-%description    fluidsynth
-This package contains a wrapper script to launch PianoBooster together with
-FluidSynth in ALSA server mode. This makes it possible to play the MIDI files
-even without a plugged-in MIDI keyboard.
-
-%files          fluidsynth
-#{_gamesbindir}/%{name}-fluidsynth
-#{_datadir}/applications/%{name}-fluidsynth.desktop
-#----------------------------------------------------------------------------
-
 %prep
 %autosetup -p1 -n %{orig_name}-%{version}
 
