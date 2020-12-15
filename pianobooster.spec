@@ -1,7 +1,7 @@
 %define orig_name PianoBooster
 
 Name:           pianobooster
-Version:        0.7.2b
+Version:        1.0.0
 Release:        1
 Summary:        A MIDI file player that teaches you how to play the piano
 Group:          Sound/Midi
