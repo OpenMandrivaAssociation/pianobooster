@@ -81,8 +81,8 @@ FluidSynth in ALSA server mode. This makes it possible to play the MIDI files
 even without a plugged-in MIDI keyboard.
 
 %files          fluidsynth
-%{_gamesbindir}/%{name}-fluidsynth
-%{_datadir}/applications/%{name}-fluidsynth.desktop
+#{_gamesbindir}/%{name}-fluidsynth
+#{_datadir}/applications/%{name}-fluidsynth.desktop
 #----------------------------------------------------------------------------
 
 %prep
