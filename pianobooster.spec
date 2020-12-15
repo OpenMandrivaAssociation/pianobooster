@@ -9,7 +9,6 @@ License:        GPLv3+
 Url:            https://github.com/captnfab/PianoBooster
 Source0:        https://github.com/captnfab/PianoBooster/archive/v%{version}/%{orig_name}-%{version}.tar.gz
 
-
 BuildRequires:  cmake
 BuildRequires:  qmake5
 BuildRequires:  pkgconfig(alsa)
@@ -26,6 +25,7 @@ BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(rtmidi)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig(fluidsynth)
 
 Requires:       fonts-ttf-dejavu
 Requires:       unzip
