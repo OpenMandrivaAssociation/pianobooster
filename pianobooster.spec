@@ -97,7 +97,7 @@ even without a plugged-in MIDI keyboard.
        -DNO_CHANGELOG=ON \
        -DINSTALL_ALL_LANGS=ON \
        -DUSE_BUNDLED_RTMIDI=OFF \
-       -DEXPERIMENTAL_USE_FLUIDSYNTH=OFF \
+       -DEXPERIMENTAL_USE_FLUIDSYNTH=ON \
        -DWITH_MAN=ON
 %make_build
 
