@@ -1,14 +1,13 @@
 %define orig_name PianoBooster
 
 Name:           pianobooster
-Version:        0.7.2b
+Version:        1.0.0
 Release:        1
 Summary:        A MIDI file player that teaches you how to play the piano
 Group:          Sound/Midi
 License:        GPLv3+
 Url:            https://github.com/captnfab/PianoBooster
 Source0:        https://github.com/captnfab/PianoBooster/archive/v%{version}/%{orig_name}-%{version}.tar.gz
-
 
 BuildRequires:  cmake
 BuildRequires:  qmake5
@@ -26,6 +25,7 @@ BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(rtmidi)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig(fluidsynth)
 
 Requires:       fonts-ttf-dejavu
 Requires:       unzip
@@ -59,33 +59,10 @@ is really recommended.
 %dir %{_datadir}/games/%{name}/translations
 %{_datadir}/games/%{name}/music/*.zip
 %{_datadir}/games/%{name}/translations/%{name}*.qm
-%{_datadir}/games/%{name}/translations/music*.qm
+#{_datadir}/games/%{name}/translations/music*.qm
 %{_datadir}/games/%{name}/translations/*.json
 %{_mandir}/man6/%{name}.6*
 
-#----------------------------------------------------------------------------
-%if 0
-# Changed USE_FLUIDSYNTH to EXPERIMENTAL_USE_FLUIDSYNTH as this option is not working yet
-
-%package        fluidsynth
-Summary:        Wrapper to launch PianoBooster with FluidSynth as MIDI sequencer
-Group:          Sound/Midi
-BuildRequires:  pkgconfig(fluidsynth)
-Requires:       %{name} = %{version}-%{release}
-Requires:       fluidsynth
-Requires:       fluid-soundfont-gm
-Requires:       fluid-soundfont-gs
-Requires:       libnotify
-
-%description    fluidsynth
-This package contains a wrapper script to launch PianoBooster together with
-FluidSynth in ALSA server mode. This makes it possible to play the MIDI files
-even without a plugged-in MIDI keyboard.
-
-%files          fluidsynth
-%{_gamesbindir}/%{name}-fluidsynth
-%{_datadir}/applications/%{name}-fluidsynth.desktop
-%endif
 #----------------------------------------------------------------------------
 
 %prep
@@ -100,7 +77,7 @@ even without a plugged-in MIDI keyboard.
        -DNO_CHANGELOG=ON \
        -DINSTALL_ALL_LANGS=ON \
        -DUSE_BUNDLED_RTMIDI=OFF \
-       -DEXPERIMENTAL_USE_FLUIDSYNTH=OFF \
+       -DEXPERIMENTAL_USE_FLUIDSYNTH=ON \
        -DWITH_MAN=ON
 %make_build
 
