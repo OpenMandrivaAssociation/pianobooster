@@ -59,13 +59,11 @@ is really recommended.
 %dir %{_datadir}/games/%{name}/translations
 %{_datadir}/games/%{name}/music/*.zip
 %{_datadir}/games/%{name}/translations/%{name}*.qm
-%{_datadir}/games/%{name}/translations/music*.qm
+#{_datadir}/games/%{name}/translations/music*.qm
 %{_datadir}/games/%{name}/translations/*.json
 %{_mandir}/man6/%{name}.6*
 
 #----------------------------------------------------------------------------
-%if 0
-# Changed USE_FLUIDSYNTH to EXPERIMENTAL_USE_FLUIDSYNTH as this option is not working yet
 
 %package        fluidsynth
 Summary:        Wrapper to launch PianoBooster with FluidSynth as MIDI sequencer
@@ -85,7 +83,6 @@ even without a plugged-in MIDI keyboard.
 %files          fluidsynth
 %{_gamesbindir}/%{name}-fluidsynth
 %{_datadir}/applications/%{name}-fluidsynth.desktop
-%endif
 #----------------------------------------------------------------------------
 
 %prep
