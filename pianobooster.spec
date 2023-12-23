@@ -2,7 +2,7 @@
 
 Name:           pianobooster
 Version:        1.0.0
-Release:        2
+Release:        3
 Summary:        A MIDI file player that teaches you how to play the piano
 Group:          Sound/Midi
 License:        GPLv3+
